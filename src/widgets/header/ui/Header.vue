@@ -1,0 +1,60 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const navLinks = ref([
+  { name: 'Features', href: '#' },
+  { name: 'Architecture', href: 'https://feature-sliced.design/' },
+  { name: 'Vite', href: 'https://vite.dev/' },
+  { name: 'Vue 3', href: 'https://vuejs.org/' }
+])
+</script>
+
+<template>
+  <header class="sticky top-0 z-50 w-full border-b border-slate-800/60 bg-[#0b0f19]/80 backdrop-blur-lg transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-2 group">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm shadow-md shadow-indigo-500/20 group-hover:scale-105 transition-transform">
+          gt
+        </div>
+        <span class="text-xl font-bold tracking-tight text-white group-hover:text-indigo-400 transition-colors">
+          github <span class="text-indigo-400 font-light">test</span>
+        </span>
+      </a>
+
+      <!-- Navigation -->
+      <nav class="hidden md:flex items-center gap-8">
+        <a 
+          v-for="link in navLinks" 
+          :key="link.name" 
+          :href="link.href"
+          :target="link.href.startsWith('http') ? '_blank' : undefined"
+          class="text-sm font-medium text-slate-400 hover:text-white transition-colors relative py-2 group"
+        >
+          {{ link.name }}
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-500 group-hover:w-full transition-all duration-300"></span>
+        </a>
+      </nav>
+
+      <!-- Actions -->
+      <div class="flex items-center gap-4">
+        <a 
+          href="https://github.com" 
+          target="_blank" 
+          class="p-2 text-slate-400 hover:text-white transition-colors"
+          aria-label="GitHub"
+        >
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+          </svg>
+        </a>
+        <a 
+          href="#get-started" 
+          class="px-4 py-2 text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg transition-colors shadow-md shadow-indigo-500/10"
+        >
+          Deploy App
+        </a>
+      </div>
+    </div>
+  </header>
+</template>
