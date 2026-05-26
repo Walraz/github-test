@@ -34,3 +34,25 @@ Used to track or log a known issue or regression.
 ### 4. `change`
 Used for general refactoring, updates, or maintenance modifications.
 * **Example**: `change(tailwind.config.js, content scan): add source file paths to tailwind config`
+
+---
+
+## Pull Request Procedure
+
+This section defines the guidelines for creating Pull Requests (PRs). Use these rules when preparing and submitting code changes.
+
+### 1. Show Draft First
+Before executing any PR creation command, the AI assistant must present a draft of the PR title and description to the user for review and explicit approval.
+
+### 2. Standardized PR Description Template
+The PR description must adhere to the following structure:
+- **Overview**: A high-level summary of the purpose of the PR and the problem being solved.
+- **Changes Proposed**: A list of key modifications, file creations, or configuration changes.
+- **Verification**: Documented proof that the changes work as intended (e.g., successful build output logs, manual visual check results).
+
+### 3. Creation via GitHub CLI
+Always use the GitHub CLI (`gh`) to automate PR creation. To prevent shell escaping errors, write the body of the PR to a temporary markdown file and reference it:
+```bash
+gh pr create --title "<title>" --body-file <path_to_temporary_body_file>
+```
+
