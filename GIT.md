@@ -56,3 +56,17 @@ Always use the GitHub CLI (`gh`) to automate PR creation. To prevent shell escap
 gh pr create --title "<title>" --body-file <path_to_temporary_body_file>
 ```
 
+---
+
+## Automatic Version Bumping
+
+This project uses a Git hook to automatically bump the npm package version after every successful commit.
+
+### 1. Mechanism
+A `post-commit` Git hook is installed locally at `.git/hooks/post-commit`.
+
+### 2. Logic
+- Every time a commit is made, the hook triggers `npm version patch`.
+- To prevent an infinite recursion loop (since `npm version patch` itself makes a commit), the hook inspects the commit message. If the message matches a semantic version (e.g. `v1.0.1` or `1.0.1`), it exits silently.
+
+
